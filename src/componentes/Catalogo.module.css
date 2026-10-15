@@ -1,0 +1,9 @@
+.errorNotice {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  text-align: center;
+}

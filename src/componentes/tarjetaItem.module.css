@@ -1,0 +1,31 @@
+/* src/componentes/Tarjetaitem.module.css */
+.cardContainer {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 1.2rem;
+    border-radius: 8px;
+    color: #f8fafc;
+}
+
+.cardTitle {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.cardValue {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 0.8rem 0;
+    color: #38bdf8;
+}
+
+.cardBadge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    background: #0f766e;
+    color: #ccfbf1;
+}

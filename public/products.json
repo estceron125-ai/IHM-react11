@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Leche Entera",
+        "price": 5000,
+        "description": "Leche 100% fresca, sin aditivos ni conservantes, recolectada directamente del campo.",
+        "category": "leche",
+        "image": "imagenes/lecheEntera.jpeg"
+    },
+    {
+        "id": 2,
+        "title": "Leche Deslactosada",
+        "price": 6000,
+        "description": "Ideal para quienes tienen sensibilidad a la lactosa, manteniendo todo el sabor y calcio.",
+        "category": "leche",
+        "image": "imagenes/lechedeslactosada.jpeg"
+    },
+    {
+        "id": 3,
+        "title": "Leche Descremada",
+        "price": 7000,
+        "description": "Baja en grasas y calorías, perfecta para una dieta balanceada y saludable.",
+        "category": "leche",
+        "image": "imagenes/lecheDescremada.jpeg"
+    },
+    {
+        "id": 4,
+        "title": "Queso Campesino",
+        "price": 12000,
+        "description": "Queso fresco artesanal con el sabor tradicional del campo. Bajo en sal.",
+        "category": "derivados",
+        "image": "imagenes/quesocampecino.jpeg"
+    },
+    {
+        "id": 5,
+        "title": "Queso Doble Crema",
+        "price": 14500,
+        "description": "Queso artesanal suave y cremoso, ideal para compartir en familia.",
+        "category": "derivados",
+        "image": "imagenes/quesodoblecrema.jpeg"
+    },
+    {
+        "id": 6,
+        "title": "Yogur Natural",
+        "price": 4500,
+        "description": "Yogur cremoso sin azúcar añadida, rico en probióticos naturales.",
+        "category": "derivados",
+        "image": "imagenes/yogurt.jpeg"
+    }
+]
