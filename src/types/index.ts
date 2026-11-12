@@ -6,6 +6,17 @@ export interface MetricaProyecto {
   estado: string;
 }
 
+// Interfaz para el Analista IA (compatible con la guía y el proyecto)
+export interface Indicator {
+  id?: number | string;
+  titulo?: string;
+  valor?: string | number;
+  estado?: string;
+  metric?: string;
+  value?: string | number;
+  status?: string;
+}
+
 // Interfaces del catálogo CampiLeche
 export interface Product {
   id: number | string;

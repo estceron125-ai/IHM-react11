@@ -1,7 +1,9 @@
 node_modules/
 dist/
-.env
-.env.*
-!.env.example
-*.local
+# Archivos que NUNCA deben subirse a GitHub
+.vercel
+.env*.local
 *.tsbuildinfo
+
+.vercel
+.env*

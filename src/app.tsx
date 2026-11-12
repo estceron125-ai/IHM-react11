@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { CategoryFilter, Product, UserProfile } from './types/index';
+import type { CategoryFilter, Product, UserProfile, Indicator } from './types/index';
 import { Header } from './componentes/Header';
 import { Hero } from './componentes/Hero';
 import { Categorias } from './componentes/Categorias';
@@ -11,6 +11,9 @@ import { PerfilModal } from './componentes/PerfilModal';
 import { CarritoModal } from './componentes/CarritoModal';
 import { formatearPrecio } from './componentes/TarjetaProducto';
 import { attachCatalogReferences, getCatalogReferences } from './services/catalogService';
+import { TarjetaItem } from './componentes/tarjetaItem';
+import { FormularioMetrica } from './componentes/FormularioMetrica';
+import { PanelIA } from './componentes/PanelIA';
 
 const PROFILE_STORAGE_KEY = 'campileche-profile';
 
@@ -86,6 +89,18 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [profileMessage, setProfileMessage] = useState('');
   const [checkoutMessage, setCheckoutMessage] = useState('');
+
+  // Indicadores del dashboard para monitoreo y análisis con IA
+  const [indicadores, setIndicadores] = useState<Indicator[]>([
+    { id: 1, titulo: 'Catálogo Activo', valor: '6 productos', estado: 'óptimo', metric: 'Catálogo Activo', value: '6 productos', status: 'óptimo' },
+    { id: 2, titulo: 'Stock Leche Entera', valor: '3 litros', estado: 'crítico', metric: 'Stock Leche Entera', value: '3 litros', status: 'crítico' },
+    { id: 3, titulo: 'Temperatura de Refrigeración', valor: '4.2 °C', estado: 'normal', metric: 'Temperatura Refrigeración', value: '4.2 °C', status: 'normal' },
+    { id: 4, titulo: 'Pedidos del Día', valor: '18 entregas', estado: 'óptimo', metric: 'Pedidos del Día', value: '18 entregas', status: 'óptimo' },
+  ]);
+
+  const agregarIndicador = (nuevaMetrica: Indicator) => {
+    setIndicadores((prev) => [nuevaMetrica, ...prev]);
+  };
 
   // Cargar perfil desde localStorage al iniciar
   useEffect(() => {
@@ -205,6 +220,52 @@ export default function App() {
           onAddToCart={handleAddToCart}
         />
         <PromoBanner onAddCombo={() => handleAddToCart(FAMILY_COMBO)} />
+
+        {/* Panel de Métricas del Negocio & Analista IA (Unidad 3 · Tema 2) */}
+        <section
+          id="analista-ia"
+          style={{
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            padding: '0 1.5rem',
+          }}
+        >
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: '1.6rem', color: '#f8fafc', marginBottom: '0.4rem' }}>
+              📊 Indicadores del Negocio & Analista IA
+            </h2>
+            <p style={{ color: '#94a3b8', fontSize: '0.95rem' }}>
+              Monitoreo en tiempo real de operaciones de CampiLeche y análisis inteligente asistido por IA.
+            </p>
+          </div>
+
+          {/* Tarjetas de Indicadores */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            {indicadores.map((ind) => (
+              <TarjetaItem
+                key={ind.id}
+                id={Number(ind.id) || 0}
+                titulo={ind.titulo ?? ind.metric ?? 'Indicador'}
+                valor={ind.valor ?? ind.value ?? 'N/A'}
+                estado={ind.estado ?? ind.status ?? 'normal'}
+              />
+            ))}
+          </div>
+
+          {/* Formulario Controlado para agregar nuevos indicadores */}
+          <FormularioMetrica onAgregarMetrica={agregarIndicador} />
+
+          {/* Componente Analista IA conectado a /api/analizar */}
+          <PanelIA indicadores={indicadores} />
+        </section>
+
         <SobreNosotros />
       </main>
 
